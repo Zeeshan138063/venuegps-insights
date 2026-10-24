@@ -1,0 +1,23 @@
+<section id="dataflow" data-transition="fade" data-section="How the data gets there, safely" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">How it works</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Track once, roll up nightly, show each venue only its own row</h2>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700">App and website</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">GA4 and Firebase on web, iOS and Android</p></div>
+<x-shape kind="arrow-right" style="background:#1A9BDB;width:56px;height:32px"></x-shape>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700">BigQuery</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Raw events, exported daily</p></div>
+<x-shape kind="arrow-right" style="background:#1A9BDB;width:56px;height:32px"></x-shape>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700">Nightly rollup</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Adds push sends, redemptions and boosts from the backend</p></div>
+<x-shape kind="arrow-right" style="background:#1A9BDB;width:56px;height:32px"></x-shape>
+<div style="flex:1;background:#1576B0;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700;color:#FBFCFE">Daily venue stats</h3><p style="font-size:24px;line-height:1.35;color:#EAF6FD">One row per venue per day</p></div>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;background:#EAF6FD;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:30px;font-weight:700;color:#0E5A88">Venue Insights</h3><p style="font-size:26px;line-height:1.4">Reads only that venue’s rows. Fast, cheap, and one venue can never see another.</p></div>
+<div style="flex:1;background:#F1ECFD;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:30px;font-weight:700;color:#4A2A9E">VenueGPS Admin</h3><p style="font-size:26px;line-height:1.4">Reads all of it, joined with billing for MRR and churn.</p></div>
+</div>
+<p style="font-size:28px;line-height:1.4"><b>Day one task:</b> turn on the GA4 BigQuery export. History can’t be added later, so every day it’s off is lost data.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">12</p>
+<aside>The venue dashboard never queries GA4 directly. Impressions are high-volume, so they are batched in the app, and we check GA4 standard limits before launch.</aside>
+</section>

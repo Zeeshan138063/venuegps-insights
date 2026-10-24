@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>VenueGPS · Venue Insights proposal</title>
+<meta name="description" content="Analytics plan, presentation and dashboard demo for VenueGPS.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --blue: #1A9BDB; --blue-dark: #1576B0; --purple: #6B3FC9; --ink: #1F2430; --muted: #5B6472; --line: #E3E6EB; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Poppins', system-ui, sans-serif; color: var(--ink); background: #F4F6F9; }
+  header { background: var(--blue-dark); color: #fff; position: relative; overflow: hidden; }
+  .in { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .top { display: flex; align-items: center; gap: 10px; padding: 18px 0; font-size: 22px; font-weight: 800; }
+  .ribbon { position: absolute; top: 26px; right: -52px; width: 210px; transform: rotate(40deg); background: var(--purple); text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .12em; padding: 6px 0; }
+  .hero { padding: 48px 0 64px; }
+  .hero h1 { margin: 0; font-size: clamp(40px, 7vw, 72px); font-weight: 800; line-height: 1.05; letter-spacing: -.02em; }
+  .hero p { margin: 16px 0 0; font-size: clamp(17px, 2.2vw, 22px); max-width: 720px; line-height: 1.5; color: #EAF6FD; }
+  .meta { margin-top: 20px; font-size: 14px; color: #D3ECF9; }
+  main { margin-top: -32px; padding-bottom: 48px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: inherit;
+          transition: transform .15s ease, box-shadow .15s ease; }
+  a.card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(20, 33, 61, .10); }
+  a.card:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+  .label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .card h2 { margin: 0; font-size: 24px; font-weight: 700; }
+  .card p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+  .go { margin-top: auto; padding-top: 8px; font-weight: 700; font-size: 15px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 8px; }
+  .links a { font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line); color: var(--ink); }
+  .links a.primary { background: var(--purple); border-color: var(--purple); color: #fff; }
+  .links a:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; }
+  .story { margin-top: 20px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .story div { font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .story b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 2px; }
+  footer { font-size: 13px; color: var(--muted); padding: 0 0 32px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="ribbon">PROPOSAL</div>
+  <div class="in">
+    <div class="top">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+      VenueGPS
+    </div>
+    <div class="hero">
+      <h1>Venue Insights</h1>
+      <p>Proof that VenueGPS brings people through the door, and a dashboard to run the business.</p>
+      <div class="meta">Analytics plan and dashboard demo · Prepared by Zeeshan · October 2026</div>
+    </div>
+  </div>
+</header>
+<main class="in">
+  <div class="grid">
+    <div class="card">
+      <span class="label" style="color:var(--purple)">Presentation · 18 slides</span>
+      <h2>The plan</h2>
+      <p>Every metric and graph option, what we chose and why, both dashboards, rollout and the decisions we need.</p>
+      <div class="links"><a class="primary" href="/deck">View slides</a><a href="/deck/VenueGPS-Insights.pdf" download>Download PDF</a></div>
+    </div>
+    <a class="card" href="/demo">
+      <span class="label" style="color:var(--blue-dark)">Live demo · Venue admin</span>
+      <h2>Venue Insights</h2>
+      <p>What a venue owner sees: 5 headline cards, 8 graphs and three levels of visit proof. Try the date range and compare switch.</p>
+      <span class="go" style="color:var(--blue-dark)">Open the venue dashboard →</span>
+    </a>
+    <a class="card" href="/demo/admin">
+      <span class="label" style="color:var(--purple)">Live demo · VenueGPS admin</span>
+      <h2>Team dashboard</h2>
+      <p>Growth, revenue, onboarding and business funnels, city supply, ad slots, cohorts and the churn risk list.</p>
+      <span class="go" style="color:var(--purple)">Open the team dashboard →</span>
+    </a>
+  </div>
+  <div class="story">
+    <div><b>Reached</b>People who saw the venue or its events</div>
+    <div><b>Took action</b>Directions, tickets, calls and website taps</div>
+    <div><b>Showed up</b>Likely and confirmed visits, never mixed</div>
+  </div>
+</main>
+<footer class="in">All dashboard numbers are sample data for illustration.</footer>
+</body>
+</html>

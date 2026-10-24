@@ -1,0 +1,29 @@
+<section id="options-b" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">All options on the table · 2 of 2</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Metrics we move, hold or drop, and why</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<div style="flex:3">
+<table style="font-family:'Poppins', Arial, sans-serif;font-size:24px;color:#1C2230">
+<tr style="background:#E8EEF5"><th style="width:36%">Metric in the spec</th><th style="width:22%">Decision</th><th style="width:42%">Reason</th></tr>
+<tr><td>MRR, ARR, churn, churn revenue, LTV, ARPU</td><td style="color:#1576B0">Move to Admin</td><td>VenueGPS’s own business numbers, not the venue’s</td></tr>
+<tr><td>Gross and net volume, GBOR, ATP, sell-through</td><td style="color:#7A5300">Only if tickets sell in-app</td><td>Otherwise needs ticket partner data and capacity per event</td></tr>
+<tr><td>Net profit, break-even, ROI</td><td style="color:#A8410F">Drop</td><td>We don’t know the venue’s costs. Show cost per action and per visit</td></tr>
+<tr><td>TRPs</td><td style="color:#A8410F">Drop</td><td>A TV planning metric, meaningless for one venue</td></tr>
+<tr><td>Secondary market pricing</td><td style="color:#A8410F">Drop</td><td>No data source</td></tr>
+<tr><td>Merch per head</td><td style="color:#A8410F">Drop for now</td><td>Needs a point-of-sale integration</td></tr>
+<tr><td>Monthly listeners, pre-saves, song adoption, skip rates</td><td style="color:#A8410F">Drop</td><td>Streaming metrics, only relevant with a Spotify integration</td></tr>
+</table>
+</div>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:20px">
+<x-icon name="Warning" style="color:#A8410F;width:56px;height:56px"></x-icon>
+<h3 style="font-size:34px;font-weight:700;line-height:1.25">Why cut half the list?</h3>
+<p style="font-size:26px;line-height:1.45;color:#4A5262">A number that is always zero, or one an owner can’t act on, hurts trust. Fewer, honest numbers sell renewals better.</p>
+<p style="font-size:26px;line-height:1.45;color:#4A5262">Also: daily refresh instead of real-time. It’s enough for owners and far cheaper.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">5</p>
+<aside>Nothing here is lost. The SaaS metrics move to the internal Admin dashboard, and ticket metrics come back if tickets are sold inside VenueGPS.</aside>
+</section>

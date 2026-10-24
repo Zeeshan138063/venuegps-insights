@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>VenueGPS Insights Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #0F1420; overflow: hidden; font-family: 'Poppins', Arial, sans-serif; }
+  #stage { position: absolute; width: 1920px; height: 1080px; transform-origin: 0 0; }
+  .slide { position: absolute; inset: 0; width: 1920px; height: 1080px; box-sizing: border-box; overflow: hidden;
+           opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s; }
+  .slide.on { opacity: 1; visibility: visible; }
+  .slide * { box-sizing: border-box; }
+  .slide h1, .slide h2, .slide h3, .slide p { margin: 0; }
+  .slide p { line-height: 1.4; }
+  .slide ul, .slide ol { margin: 0; padding-left: 1.3em; }
+  .slide table { border-collapse: collapse; width: 100%; }
+  .slide th, .slide td { padding: .35em .6em; border-bottom: 1px solid #D5DAE1; text-align: left; vertical-align: top; line-height: 1.35; }
+  .slide th { font-weight: 700; }
+  .slide div:not([style*="display"]) { display: flex; flex-direction: column; }
+  .slide a { color: inherit; }
+  #bar { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; gap: 6px; align-items: center;
+         background: rgba(15,20,32,.82); color: #fff; padding: 6px; border-radius: 999px; font-size: 14px;
+         transition: opacity .3s; z-index: 10; }
+  #bar.hide { opacity: 0; pointer-events: none; }
+  #bar button, #bar a { all: unset; cursor: pointer; padding: 8px 14px; border-radius: 999px; font-weight: 600; }
+  #bar button:hover, #bar a:hover { background: rgba(255,255,255,.14); }
+  #bar button:focus-visible, #bar a:focus-visible { outline: 2px solid #8FCDEF; }
+  #count { padding: 0 8px; min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+  @page { size: 1920px 1080px; margin: 0; }
+  @media print {
+    html, body { overflow: visible; height: auto; background: #fff; }
+    #stage { position: static; transform: none !important; width: 1920px; height: auto; }
+    .slide { position: relative; opacity: 1; visibility: visible; transition: none; break-after: page; }
+    #bar { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+<section class="slide" id="cover" data-transition="fade" style="background:#1576B0;color:#FBFCFE;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="position:absolute;left:1500px;top:96px;width:520px;height:72px;background:#6B3FC9;transform:rotate(40deg);display:flex;align-items:center;justify-content:center"><p style="font-size:28px;font-weight:700;letter-spacing:4px;color:#FBFCFE">PROPOSAL</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#FBFCFE;width:64px;height:64px;flex-shrink:0"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+<p style="font-size:44px;font-weight:800">VenueGPS</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:28px">
+<h1 style="font-size:132px;font-weight:800;line-height:1.05;letter-spacing:-2px">Venue Insights</h1>
+<p style="font-size:48px;font-weight:500;line-height:1.3;width:1300px">Proof that VenueGPS brings people through the door, and a dashboard to run the business.</p>
+</div>
+<p style="font-size:30px;font-weight:500">Analytics plan and dashboard demo · Prepared by Zeeshan · 24 October 2026</p>
+
+</section>
+
+<section class="slide" id="why" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">The problem</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.15;width:1500px">Venues pay every month. If they can’t see what VenueGPS brought them, they leave.</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:stretch">
+<div style="flex:2;background:#6B3FC9;border-radius:24px;padding:56px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#E4DAFB;text-transform:uppercase">The one story we sell</p>
+<p style="font-size:48px;font-weight:600;line-height:1.3;color:#FBFCFE">“We put your venue in front of <b>X people</b>. <b>Y</b> of them took action. About <b>Z</b> showed up.”</p>
+</div>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:24px;padding:48px;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:36px;font-weight:700">So the plan is simple</h3>
+<p style="font-size:28px;line-height:1.45;color:#4A5262">Every number and every graph on the venue dashboard feeds this story. Anything that doesn’t, we leave out.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">2</p>
+
+</section>
+
+<section class="slide" id="audiences" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">Two audiences, two dashboards</p>
+<h2 style="font-size:60px;font-weight:700;line-height:1.15">One set of tracked events, used twice</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #1A9BDB;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:22px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#1576B0;text-transform:uppercase">Venue Admin · Venue Insights</p>
+<h3 style="font-size:40px;font-weight:700">For venue owners</h3>
+<p style="font-size:28px;line-height:1.4"><b>Question:</b> Is VenueGPS worth my monthly fee?</p>
+<p style="font-size:28px;line-height:1.4"><b>Where:</b> Insights tab in the business account, plus a monthly email or PDF</p>
+<p style="font-size:28px;line-height:1.4"><b>Sees:</b> only their own venue, events and campaigns</p>
+<p style="font-size:28px;line-height:1.4"><b>Fresh:</b> yesterday’s totals, refreshed daily</p>
+</div>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #6B3FC9;border-radius:20px;padding:48px;display:flex;flex-direction:column;gap:22px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#6B3FC9;text-transform:uppercase">VenueGPS Admin</p>
+<h3 style="font-size:40px;font-weight:700">For the VenueGPS team</h3>
+<p style="font-size:28px;line-height:1.4"><b>Question:</b> Is the app growing, converting and keeping venues?</p>
+<p style="font-size:28px;line-height:1.4"><b>Where:</b> internal dashboard built on GA4, BigQuery and billing</p>
+<p style="font-size:28px;line-height:1.4"><b>Sees:</b> all users, all venues, all revenue</p>
+<p style="font-size:28px;line-height:1.4"><b>Fresh:</b> daily</p>
+</div>
+</div>
+<p style="font-size:28px;color:#4A5262;line-height:1.4">Why not just give venues a GA4 login? GA4 can’t safely limit a login to one venue, it hides small numbers, and it can’t show redemptions or push sends. Our own dashboard can, and it becomes a feature we control and can charge for.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">3</p>
+
+</section>
+
+<section class="slide" id="options-a" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">All options on the table · 1 of 2</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Metrics from the current spec we keep or reshape</h2>
+</div>
+<table style="font-family:'Poppins', Arial, sans-serif;font-size:24px;color:#1C2230">
+<tr style="background:#E8EEF5"><th style="width:34%">Metric in the spec</th><th style="width:16%">Decision</th><th style="width:50%">How it shows up</th></tr>
+<tr><td>Impressions, reach, frequency</td><td style="color:#13703F">Keep · now</td><td>People reached card, funnel, boosted vs organic</td></tr>
+<tr><td>Clicks, ticket engagement, saves, follows</td><td style="color:#13703F">Keep · now</td><td>Actions card and the impact funnel</td></tr>
+<tr><td>Active followers</td><td style="color:#13703F">Keep · now</td><td>Followers card, with net new this period</td></tr>
+<tr><td>CPM</td><td style="color:#13703F">Keep · now</td><td>Boost results, plus cost per action, which owners understand better</td></tr>
+<tr><td>Conversion rate</td><td style="color:#13703F">Keep · now</td><td>View to action rate per event</td></tr>
+<tr><td>Dwell time</td><td style="color:#1576B0">Rename</td><td>“Average time on your page” (physical dwell needs location data)</td></tr>
+<tr><td>New customers, retention</td><td style="color:#1576B0">Rename</td><td>“New vs returning visitors” to the venue page</td></tr>
+<tr><td>Indexing, proximity</td><td style="color:#6B3FC9">Keep · phase 2</td><td>“You vs similar venues” index (100 = city median)</td></tr>
+<tr><td>Footfall, location uplift</td><td style="color:#6B3FC9">Keep · phase 2</td><td>“Likely visited” and “Confirmed visit”</td></tr>
+<tr><td>Geo-targeted audience concentration</td><td style="color:#6B3FC9">Keep · phase 2</td><td>Audience by home city, city level only</td></tr>
+<tr><td>Retargeting engagement, search lift</td><td style="color:#6B3FC9">Keep · phase 3</td><td>Re-engaged users after a push; venue searches before vs after a boost</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">4</p>
+
+</section>
+
+<section class="slide" id="options-b" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">All options on the table · 2 of 2</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Metrics we move, hold or drop, and why</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<div style="flex:3">
+<table style="font-family:'Poppins', Arial, sans-serif;font-size:24px;color:#1C2230">
+<tr style="background:#E8EEF5"><th style="width:36%">Metric in the spec</th><th style="width:22%">Decision</th><th style="width:42%">Reason</th></tr>
+<tr><td>MRR, ARR, churn, churn revenue, LTV, ARPU</td><td style="color:#1576B0">Move to Admin</td><td>VenueGPS’s own business numbers, not the venue’s</td></tr>
+<tr><td>Gross and net volume, GBOR, ATP, sell-through</td><td style="color:#7A5300">Only if tickets sell in-app</td><td>Otherwise needs ticket partner data and capacity per event</td></tr>
+<tr><td>Net profit, break-even, ROI</td><td style="color:#A8410F">Drop</td><td>We don’t know the venue’s costs. Show cost per action and per visit</td></tr>
+<tr><td>TRPs</td><td style="color:#A8410F">Drop</td><td>A TV planning metric, meaningless for one venue</td></tr>
+<tr><td>Secondary market pricing</td><td style="color:#A8410F">Drop</td><td>No data source</td></tr>
+<tr><td>Merch per head</td><td style="color:#A8410F">Drop for now</td><td>Needs a point-of-sale integration</td></tr>
+<tr><td>Monthly listeners, pre-saves, song adoption, skip rates</td><td style="color:#A8410F">Drop</td><td>Streaming metrics, only relevant with a Spotify integration</td></tr>
+</table>
+</div>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:20px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#A8410F;width:56px;height:56px;flex-shrink:0"><path d="M21.73 18l-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+<h3 style="font-size:34px;font-weight:700;line-height:1.25">Why cut half the list?</h3>
+<p style="font-size:26px;line-height:1.45;color:#4A5262">A number that is always zero, or one an owner can’t act on, hurts trust. Fewer, honest numbers sell renewals better.</p>
+<p style="font-size:26px;line-height:1.45;color:#4A5262">Also: daily refresh instead of real-time. It’s enough for owners and far cheaper.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">5</p>
+
+</section>
+
+<section class="slide" id="shortlist" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">What we’re going with</p>
+<h2 style="font-size:60px;font-weight:700;line-height:1.15">Version 1 scope, and what waits</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:stretch">
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #1A9BDB;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#1576B0;text-transform:uppercase">Now · Venue Insights</p>
+<h3 style="font-size:32px;font-weight:700">5 headline cards + 8 graphs</h3>
+<ol style="font-size:26px;line-height:1.4;color:#1C2230">
+<li>Impact funnel</li>
+<li>Activity over time</li>
+<li>Event performance</li>
+<li>Boosted vs organic</li>
+<li>Push results</li>
+<li>Where your audience comes from</li>
+<li>When people look at you</li>
+<li>You vs similar venues</li>
+</ol>
+</div>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #6B3FC9;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#6B3FC9;text-transform:uppercase">Now · VenueGPS Admin</p>
+<h3 style="font-size:32px;font-weight:700">6 KPIs + 9 reports</h3>
+<ul style="font-size:26px;line-height:1.4;color:#1C2230">
+<li>Growth trend</li>
+<li>Revenue mix</li>
+<li>Onboarding funnel</li>
+<li>Business funnel</li>
+<li>Content supply by city</li>
+<li>Explore and ad placements</li>
+<li>Retention cohorts</li>
+<li>Acquisition</li>
+<li>Venue health and churn risk</li>
+</ul>
+</div>
+<div style="flex:1;background:#EEF1F5;border:2px solid #E3E6EB;border-top:10px solid #8C95A3;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262;text-transform:uppercase">Later · once v1 is used</p>
+<h3 style="font-size:32px;font-weight:700">Optional add-ons</h3>
+<ul style="font-size:26px;line-height:1.4;color:#1C2230">
+<li>What your audience likes</li>
+<li>Where people found you</li>
+<li>Follower growth chart</li>
+<li>Retargeting and search lift</li>
+<li>Ticket sales metrics, if in-app</li>
+<li>Plan conversion funnel (Admin)</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">6</p>
+
+</section>
+
+<section class="slide" id="cards" data-transition="fade" data-section="The Venue Insights dashboard for venue owners" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">Venue Insights · top row</p>
+<h2 style="font-size:60px;font-weight:700;line-height:1.15">Five headline cards an owner reads in ten seconds</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(5, 1fr);gap:24px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#1576B0;width:52px;height:52px;flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">People reached</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262">Unique people who saw the venue or its events, anywhere in the app.</p>
+<p style="font-size:24px;line-height:1.4;color:#4A2A9E;font-weight:600">Shows the size of the audience VenueGPS gives them.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#1576B0;width:52px;height:52px;flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Profile and event views</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262">Opens of the venue page or an event page.</p>
+<p style="font-size:24px;line-height:1.4;color:#4A2A9E;font-weight:600">Proves people were interested enough to look.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#1576B0;width:52px;height:52px;flex-shrink:0"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Actions taken</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262">Directions, ticket clicks, calls and website taps.</p>
+<p style="font-size:24px;line-height:1.4;color:#4A2A9E;font-weight:600">The closest thing to a booking an app can see.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#1576B0;width:52px;height:52px;flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Visits from VenueGPS</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262">Confirmed and likely visits, always shown apart.</p>
+<p style="font-size:24px;line-height:1.4;color:#4A2A9E;font-weight:600">Answers the question owners care about most.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#1576B0;width:52px;height:52px;flex-shrink:0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Followers</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262">Total followers, plus net new this period.</p>
+<p style="font-size:24px;line-height:1.4;color:#4A2A9E;font-weight:600">Shows an audience they own and can push to.</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#4A5262">Every card shows the change against the previous period, with a 7, 30 or 90 day picker at the top.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">7</p>
+
+</section>
+
+<section class="slide" id="graphs-1" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">Venue Insights · graphs 1 to 4</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Each graph answers one question an owner asks</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Funnel chart sketch" width="320" height="110" viewBox="0 0 320 110"><rect x="0" y="4" width="320" height="16" rx="4" fill="#8FCDEF"/><rect x="0" y="26" width="230" height="16" rx="4" fill="#4BB4E6"/><rect x="0" y="48" width="160" height="16" rx="4" fill="#1A9BDB"/><rect x="0" y="70" width="100" height="16" rx="4" fill="#6B3FC9"/><rect x="0" y="92" width="56" height="16" rx="4" fill="#4A2A9E"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">1 · FUNNEL</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">VenueGPS impact funnel</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“How many people did you bring me?”</p>
+<p style="font-size:24px;line-height:1.4">Reached, viewed, saved, acted, visited. The whole value story in one picture, and it shows where people drop off.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Line chart sketch with event markers" width="320" height="110" viewBox="0 0 320 110"><path d="M0 90 L40 80 L80 84 L120 60 L160 70 L200 40 L240 52 L280 24 L320 34" fill="none" stroke="#1A9BDB" stroke-width="4"/><path d="M0 98 L40 92 L80 95 L120 82 L160 88 L200 70 L240 76 L280 64 L320 66" fill="none" stroke="#8C95A3" stroke-width="3" stroke-dasharray="8 6"/><circle cx="120" cy="60" r="8" fill="#6B3FC9"/><circle cx="280" cy="24" r="8" fill="#6B3FC9"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">2 · LINE CHART</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Activity over time</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“Is it working more this month?”</p>
+<p style="font-size:24px;line-height:1.4">Event nights and pushes are marked on the line, so owners see what caused each spike and do more of it.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Table with mini bars sketch" width="320" height="110" viewBox="0 0 320 110"><rect x="0" y="6" width="70" height="14" rx="3" fill="#1C2230"/><rect x="84" y="10" width="236" height="8" rx="4" fill="#1A9BDB"/><rect x="0" y="40" width="70" height="14" rx="3" fill="#1C2230"/><rect x="84" y="44" width="170" height="8" rx="4" fill="#1A9BDB"/><rect x="0" y="74" width="70" height="14" rx="3" fill="#1C2230"/><rect x="84" y="78" width="110" height="8" rx="4" fill="#1A9BDB"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">3 · SORTABLE TABLE</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Event performance</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“Which events pulled the crowd?”</p>
+<p style="font-size:24px;line-height:1.4">Views, saves, ticket clicks and view-to-action rate per event. Owners learn which nights to repeat.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Stacked bar chart sketch" width="320" height="110" viewBox="0 0 320 110"><rect x="10" y="60" width="40" height="50" fill="#8FCDEF"/><rect x="10" y="40" width="40" height="20" fill="#6B3FC9"/><rect x="74" y="54" width="40" height="56" fill="#8FCDEF"/><rect x="138" y="50" width="40" height="60" fill="#8FCDEF"/><rect x="138" y="20" width="40" height="30" fill="#6B3FC9"/><rect x="202" y="48" width="40" height="62" fill="#8FCDEF"/><rect x="202" y="10" width="40" height="38" fill="#6B3FC9"/><rect x="266" y="56" width="40" height="54" fill="#8FCDEF"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">4 · STACKED BARS</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Boosted vs organic</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“Was the boost money worth it?”</p>
+<p style="font-size:24px;line-height:1.4">Spend, CPM and cost per action. When boosts clearly pay off, owners buy more of them.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">8</p>
+
+</section>
+
+<section class="slide" id="graphs-2" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">Venue Insights · graphs 5 to 8</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">From “what happened” to “what to do next”</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Bar per push campaign sketch" width="320" height="110" viewBox="0 0 320 110"><rect x="0" y="8" width="320" height="16" rx="8" fill="#EEF1F5"/><rect x="0" y="8" width="230" height="16" rx="8" fill="#6B3FC9"/><rect x="0" y="46" width="320" height="16" rx="8" fill="#EEF1F5"/><rect x="0" y="46" width="160" height="16" rx="8" fill="#6B3FC9"/><rect x="0" y="84" width="320" height="16" rx="8" fill="#EEF1F5"/><rect x="0" y="84" width="270" height="16" rx="8" fill="#6B3FC9"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">5 · BAR PER CAMPAIGN</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Push results</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“Did my push bring people?”</p>
+<p style="font-size:24px;line-height:1.4">Sent, opened and actions within 24 hours. Showing full results for the free push makes paid triggers an easy sell.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Locals versus visitors split and city bars sketch" width="320" height="110" viewBox="0 0 320 110"><rect x="0" y="4" width="186" height="26" fill="#1A9BDB"/><rect x="186" y="4" width="134" height="26" fill="#6B3FC9"/><rect x="0" y="46" width="260" height="12" rx="6" fill="#1A9BDB"/><rect x="0" y="68" width="120" height="12" rx="6" fill="#6B3FC9"/><rect x="0" y="90" width="80" height="12" rx="6" fill="#6B3FC9"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">6 · SPLIT + CITY BARS</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">Where your audience comes from</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“Locals or tourists?”</p>
+<p style="font-size:24px;line-height:1.4">Home city from onboarding. Owners plan offers for visitors, and VenueGPS can sell tourist reach.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Weekday by hour heatmap sketch" width="320" height="110" viewBox="0 0 320 110"><rect x="0" y="0" width="74" height="30" rx="4" fill="#D3ECF9"/><rect x="82" y="0" width="74" height="30" rx="4" fill="#8FCDEF"/><rect x="164" y="0" width="74" height="30" rx="4" fill="#4BB4E6"/><rect x="246" y="0" width="74" height="30" rx="4" fill="#8FCDEF"/><rect x="0" y="40" width="74" height="30" rx="4" fill="#8FCDEF"/><rect x="82" y="40" width="74" height="30" rx="4" fill="#4BB4E6"/><rect x="164" y="40" width="74" height="30" rx="4" fill="#1A9BDB"/><rect x="246" y="40" width="74" height="30" rx="4" fill="#4BB4E6"/><rect x="0" y="80" width="74" height="30" rx="4" fill="#4BB4E6"/><rect x="82" y="80" width="74" height="30" rx="4" fill="#1A9BDB"/><rect x="164" y="80" width="74" height="30" rx="4" fill="#0F6FA6"/><rect x="246" y="80" width="74" height="30" rx="4" fill="#1A9BDB"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">7 · HEATMAP</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">When people look at you</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“When should I post or push?”</p>
+<p style="font-size:24px;line-height:1.4">Views by weekday and hour, with a plain tip like “push on Friday around 6 pm”.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<svg aria-label="Index bars against city median sketch" width="320" height="110" viewBox="0 0 320 110"><rect x="0" y="8" width="230" height="18" rx="4" fill="#1A9BDB"/><rect x="0" y="46" width="200" height="18" rx="4" fill="#1A9BDB"/><rect x="0" y="84" width="140" height="18" rx="4" fill="#E2711D"/><rect x="159" y="0" width="3" height="110" fill="#1C2230"/></svg>
+<p style="font-size:24px;font-weight:700;color:#1576B0">8 · INDEX BARS</p>
+<h3 style="font-size:30px;font-weight:700;line-height:1.2">You vs similar venues</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A5262;font-style:italic">“Am I doing well?”</p>
+<p style="font-size:24px;line-height:1.4">100 is the city median for the same venue type. It gives every number a context a raw total can’t.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">9</p>
+
+</section>
+
+<section class="slide" id="proof" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">Proving “people who came because of VenueGPS”</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Three levels of proof, labelled and never mixed</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:12px solid #8FCDEF;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262;text-transform:uppercase">Intent</p>
+<h3 style="font-size:40px;font-weight:700">“Planned to come”</h3>
+<p style="font-size:26px;line-height:1.45">Tapped Get Directions, a ticket link or Call.</p>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Works today with app events.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:12px solid #1A9BDB;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262;text-transform:uppercase">Estimated</p>
+<h3 style="font-size:40px;font-weight:700">“Likely visited”</h3>
+<p style="font-size:26px;line-height:1.45">Viewed or saved the venue, then was inside its area within 7 days.</p>
+<p style="font-size:24px;line-height:1.4;color:#7A5300;font-weight:600">Needs opt-in background location.</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:12px solid #6B3FC9;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262;text-transform:uppercase">Verified</p>
+<h3 style="font-size:40px;font-weight:700">“Confirmed visit”</h3>
+<p style="font-size:26px;line-height:1.45">Door offer redeemed, QR check-in, or ticket scanned at the door.</p>
+<p style="font-size:24px;line-height:1.4;color:#7A5300;font-weight:600">Needs venues to accept a door offer.</p>
+</div>
+</div>
+<div style="background:#6B3FC9;border-radius:20px;padding:40px 48px;display:flex;flex-direction:row;gap:32px;align-items:center">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#FBFCFE;width:64px;height:64px;flex-shrink:0"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+<p style="font-size:30px;line-height:1.4;color:#FBFCFE"><b>Fastest win:</b> a “Show this at the door” VenueGPS offer. The app already has a 15% discount pop-up. Each redemption is a confirmed visit, and staff confirm it with one tap.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">10</p>
+
+</section>
+
+<section class="slide" id="admin" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">VenueGPS Admin · for the internal team</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">One screen to run growth, revenue and venue success</h2>
+</div>
+<div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:12px">
+<p style="font-size:24px;font-weight:600;background:#E4DAFB;color:#4A2A9E;padding:8px 20px;border-radius:999px">Active users</p>
+<p style="font-size:24px;font-weight:600;background:#E4DAFB;color:#4A2A9E;padding:8px 20px;border-radius:999px">New sign-ups</p>
+<p style="font-size:24px;font-weight:600;background:#E4DAFB;color:#4A2A9E;padding:8px 20px;border-radius:999px">Live venues</p>
+<p style="font-size:24px;font-weight:600;background:#E4DAFB;color:#4A2A9E;padding:8px 20px;border-radius:999px">Paying venues</p>
+<p style="font-size:24px;font-weight:600;background:#E4DAFB;color:#4A2A9E;padding:8px 20px;border-radius:999px">MRR</p>
+<p style="font-size:24px;font-weight:600;background:#E4DAFB;color:#4A2A9E;padding:8px 20px;border-radius:999px">Venue churn</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:20px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Growth trend</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Active users and sign-ups vs last period. Spots a slowdown early.</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Revenue mix</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Plans, boosts and push triggers. Shows what to push and how to price.</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Onboarding funnel</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">All 9 new screens, mobile vs desktop. Finds the screen losing users.</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Business funnel</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Claim, approval, first event, first boost. Shows where venues stall.</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Content supply by city</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Live events and venues per city. Flags thin cities for sales.</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Explore and ad placements</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Impressions and click rate per slot. Tells you which slots to price higher.</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Retention cohorts</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Do new users come back after their first weekend?</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700">Acquisition</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Which channels bring users who stay, so marketing money goes there.</p></div>
+<div style="background:#6B3FC9;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:28px;font-weight:700;color:#FBFCFE">Venue health and churn risk</h3><p style="font-size:24px;line-height:1.35;color:#F1ECFD">A weekly call list of paying venues getting little value, before they cancel.</p></div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">11</p>
+
+</section>
+
+<section class="slide" id="dataflow" data-transition="fade" data-section="How the data gets there, safely" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">How it works</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Track once, roll up nightly, show each venue only its own row</h2>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700">App and website</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">GA4 and Firebase on web, iOS and Android</p></div>
+<svg viewBox="0 0 56 32" aria-hidden="true" style="width:56px;height:32px;flex-shrink:0"><polygon points="0,10 34,10 34,0 56,16 34,32 34,22 0,22" fill="#1A9BDB"/></svg>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700">BigQuery</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Raw events, exported daily</p></div>
+<svg viewBox="0 0 56 32" aria-hidden="true" style="width:56px;height:32px;flex-shrink:0"><polygon points="0,10 34,10 34,0 56,16 34,32 34,22 0,22" fill="#1A9BDB"/></svg>
+<div style="flex:1;background:#FDFDFE;border:2px solid #E3E6EB;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700">Nightly rollup</h3><p style="font-size:24px;line-height:1.35;color:#4A5262">Adds push sends, redemptions and boosts from the backend</p></div>
+<svg viewBox="0 0 56 32" aria-hidden="true" style="width:56px;height:32px;flex-shrink:0"><polygon points="0,10 34,10 34,0 56,16 34,32 34,22 0,22" fill="#1A9BDB"/></svg>
+<div style="flex:1;background:#1576B0;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:28px;font-weight:700;color:#FBFCFE">Daily venue stats</h3><p style="font-size:24px;line-height:1.35;color:#EAF6FD">One row per venue per day</p></div>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;background:#EAF6FD;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:30px;font-weight:700;color:#0E5A88">Venue Insights</h3><p style="font-size:26px;line-height:1.4">Reads only that venue’s rows. Fast, cheap, and one venue can never see another.</p></div>
+<div style="flex:1;background:#F1ECFD;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px"><h3 style="font-size:30px;font-weight:700;color:#4A2A9E">VenueGPS Admin</h3><p style="font-size:26px;line-height:1.4">Reads all of it, joined with billing for MRR and churn.</p></div>
+</div>
+<p style="font-size:28px;line-height:1.4"><b>Day one task:</b> turn on the GA4 BigQuery export. History can’t be added later, so every day it’s off is lost data.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">12</p>
+
+</section>
+
+<section class="slide" id="tracking" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">What we track</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">A short event list that powers every graph</h2>
+</div>
+<div style="background:#1C2230;border-radius:16px;padding:24px 32px">
+<p style="font-size:26px;line-height:1.4;color:#EEF1F5"><b>Every venue event carries:</b> venue_id · event_id · campaign_id · placement · is_boosted · city</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:16px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">venue_impression</p><p style="font-size:24px;color:#4A5262">card seen for 1 second</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">venue_view, event_view</p><p style="font-size:24px;color:#4A5262">detail page opened</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">venue_follow, event_save</p><p style="font-size:24px;color:#4A5262">interest shown</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">get_directions</p><p style="font-size:24px;color:#4A5262">planning to come</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">ticket_click</p><p style="font-size:24px;color:#4A5262">ticket or buy link</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">call_click, website_click</p><p style="font-size:24px;color:#4A5262">contact taps</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">push_open</p><p style="font-size:24px;color:#4A5262">notification opened</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">offer_redeem</p><p style="font-size:24px;color:#4A5262">door offer used</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">ad_impression, ad_click</p><p style="font-size:24px;color:#4A5262">banners and boosts</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">search, share</p><p style="font-size:24px;color:#4A5262">discovery and spread</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">onboarding_step</p><p style="font-size:24px;color:#4A5262">each of the 9 screens</p></div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:14px;padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#1576B0">sign_up, subscription_*</p><p style="font-size:24px;color:#4A5262">account and plan changes</p></div>
+</div>
+<p style="font-size:26px;line-height:1.4;color:#4A5262"><b style="color:#1C2230">Sent from the backend, not the app:</b> push_sent, push_delivered, claim_approved, boost_purchased, trigger_purchased, visit_estimated. These are the source of truth for counts the app can’t see.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">13</p>
+
+</section>
+
+<section class="slide" id="privacy" data-transition="fade" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#1576B0;text-transform:uppercase">Privacy rules</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">Venues see counts, never people</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:28px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:40px;display:flex;flex-direction:row;gap:28px;align-items:start">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#6B3FC9;width:56px;height:56px;flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px"><h3 style="font-size:32px;font-weight:700">Totals only</h3><p style="font-size:26px;line-height:1.45;color:#4A5262">No names, emails or lists of viewers. Owners see a follower count, not who follows.</p></div>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:40px;display:flex;flex-direction:row;gap:28px;align-items:start">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#6B3FC9;width:56px;height:56px;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px"><h3 style="font-size:32px;font-weight:700">Groups of 10 or more</h3><p style="font-size:26px;line-height:1.45;color:#4A5262">Any slice under 10 users shows as “fewer than 10”, so no one can be singled out.</p></div>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:40px;display:flex;flex-direction:row;gap:28px;align-items:start">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#6B3FC9;width:56px;height:56px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px"><h3 style="font-size:32px;font-weight:700">City level only</h3><p style="font-size:26px;line-height:1.45;color:#4A5262">Raw location stays on the server and is deleted after visits are matched.</p></div>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-radius:20px;padding:40px;display:flex;flex-direction:row;gap:28px;align-items:start">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#6B3FC9;width:56px;height:56px;flex-shrink:0"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.2 3 1.2 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.2-3-1.2-3 2.8-1.6.9-3.1 3.2.3z"/><path d="M9 12l2 2 4-4"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px"><h3 style="font-size:32px;font-weight:700">Consent first</h3><p style="font-size:26px;line-height:1.45;color:#4A5262">iOS tracking prompt, consent mode on web, background location opt-in only. The privacy policy says venues get aggregate stats.</p></div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">14</p>
+
+</section>
+
+<section class="slide" id="rollout" data-transition="fade" data-section="Rollout, value and the decisions we need" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">Rollout</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Tracking first, then each phase earns the next</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #1C2230;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262">PHASE 0</p>
+<h3 style="font-size:32px;font-weight:700">Tracking</h3>
+<ul style="font-size:24px;line-height:1.4"><li>GA4 and Firebase events on web, iOS, Android</li><li>BigQuery export on</li><li>Backend events for pushes and boosts</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: events match real app usage in BigQuery</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #1A9BDB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#1576B0">PHASE 1</p>
+<h3 style="font-size:32px;font-weight:700">Insights v1</h3>
+<ul style="font-size:24px;line-height:1.4"><li>5 cards, graphs 1 to 5</li><li>Door offer for confirmed visits</li><li>Admin KPIs, funnels, revenue</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: pilot venues use it and say it helps</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #6B3FC9;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#6B3FC9">PHASE 2</p>
+<h3 style="font-size:32px;font-weight:700">Full picture</h3>
+<ul style="font-size:24px;line-height:1.4"><li>Graphs 6 to 8</li><li>“Likely visited” with opt-in location</li><li>Monthly email or PDF</li><li>Churn risk list</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: enough venues per city to benchmark</p>
+</div>
+<div style="background:#EEF1F5;border:2px solid #E3E6EB;border-top:10px solid #8C95A3;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262">PHASE 3</p>
+<h3 style="font-size:32px;font-weight:700">Add-ons</h3>
+<ul style="font-size:24px;line-height:1.4"><li>Retargeting and search lift</li><li>Audience interests</li><li>Ticket partner data</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: chosen from how owners use v1</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#4A5262">Why tracking first: every graph depends on it, and GA4 history can’t be backfilled.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">15</p>
+
+</section>
+
+<section class="slide" id="value" data-transition="fade" style="background:#1C2230;color:#FBFCFE;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#8FCDEF;text-transform:uppercase">What VenueGPS gets</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">Insights pays for itself in four ways</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="background:#2A3142;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#8FCDEF;width:56px;height:56px;flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">Fewer cancellations</h3>
+<p style="font-size:26px;line-height:1.45;color:#C9D1DD">Every visit to the dashboard is a reason to renew.</p>
+</div>
+<div style="background:#2A3142;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#8FCDEF;width:56px;height:56px;flex-shrink:0"><path d="M3 3v18h18"/><path d="M7 16v-4"/><path d="M12 16V8"/><path d="M17 16V9"/></svg>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">More boost and push sales</h3>
+<p style="font-size:26px;line-height:1.45;color:#C9D1DD">Cost per action makes the return visible, so owners buy again.</p>
+</div>
+<div style="background:#2A3142;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#8FCDEF;width:56px;height:56px;flex-shrink:0"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">A feature to charge for</h3>
+<p style="font-size:26px;line-height:1.45;color:#C9D1DD">Full Insights can be a premium tier, with a preview on lower plans.</p>
+</div>
+<div style="background:#2A3142;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#8FCDEF;width:56px;height:56px;flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">A sharper team</h3>
+<p style="font-size:26px;line-height:1.45;color:#C9D1DD">Churn alerts, thin cities and slot pricing tell sales where to act.</p>
+</div>
+</div>
+<div style="border-left:8px solid #6B3FC9;padding:8px 0 8px 32px">
+<p style="font-size:34px;line-height:1.4;font-weight:500">Owners stop asking “is this working?” because the answer is on their screen every morning.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#8C95A3">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#8C95A3;text-align:right">16</p>
+
+</section>
+
+<section class="slide" id="decisions" data-transition="fade" style="background:#6B3FC9;color:#FBFCFE;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#E4DAFB;text-transform:uppercase">What we need from you</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">Eight answers, and we can start</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<ol style="flex:1;font-size:27px;line-height:1.5;color:#FBFCFE">
+<li>Are tickets sold inside VenueGPS, or only linked out?</li>
+<li>Is GA4 or Firebase installed, and is the BigQuery export on?</li>
+<li>What is the current backend and database?</li>
+<li>Will venues accept a door offer or QR check-in?</li>
+</ol>
+<ol start="5" style="flex:1;font-size:27px;line-height:1.5;color:#FBFCFE">
+<li>Does the app ask for background location today?</li>
+<li>Is Insights in every business plan, or a premium upsell?</li>
+<li>Do promoters and touring artists need their own view?</li>
+<li>Which cities are live, so benchmarks are fair?</li>
+</ol>
+</div>
+<div style="background:#FBFCFE;border-radius:20px;padding:36px 44px;display:flex;flex-direction:row;gap:28px;align-items:center">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#6B3FC9;width:64px;height:64px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+<p style="font-size:32px;line-height:1.4;color:#1C2230"><b>Next step:</b> approve the v1 scope and switch on tracking this week. Every day without the BigQuery export is data we can’t get back.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#E4DAFB">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#E4DAFB;text-align:right">17</p>
+
+</section>
+
+<section class="slide" id="demo" data-transition="fade" style="background:#1576B0;color:#FBFCFE;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#D3ECF9;text-transform:uppercase">See it live</p>
+<h2 style="font-size:72px;font-weight:800;line-height:1.1">Both dashboards, clickable, in the VenueGPS look</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;background:#FBFCFE;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#1576B0;text-transform:uppercase">Venue admin</p>
+<h3 style="font-size:34px;font-weight:700;color:#1C2230">Skyline Rooftop Bar (sample venue)</h3>
+<p style="font-size:26px;line-height:1.45;color:#4A5262">Switch 7, 30 or 90 days, turn compare on and off, flip Views and Actions, sort the event table.</p>
+</div>
+<div style="flex:1;background:#FBFCFE;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#6B3FC9;text-transform:uppercase">VenueGPS admin</p>
+<h3 style="font-size:34px;font-weight:700;color:#1C2230">Team dashboard</h3>
+<p style="font-size:26px;line-height:1.45;color:#4A5262">Switch the date range, the growth metric and the onboarding platform, and read the churn risk list.</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4"><a href="/demo" style="color:#FBFCFE">Open the live demo</a> · the pill at the top right switches between the two dashboards. All numbers are sample data.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#D3ECF9">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#D3ECF9;text-align:right">18</p>
+
+</section>
+
+</div>
+<nav id="bar" aria-label="Slide controls">
+  <a href="/" title="Back to the overview">Home</a>
+  <button id="prev" aria-label="Previous slide">&larr;</button>
+  <span id="count" aria-live="polite">1 / 1</span>
+  <button id="next" aria-label="Next slide">&rarr;</button>
+  <button id="full" title="Full screen (F)">Full screen</button>
+  <a href="/deck/VenueGPS-Insights.pdf" download>PDF</a>
+</nav>
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  const slides = [...document.querySelectorAll('.slide')];
+  const count = document.getElementById('count');
+  const bar = document.getElementById('bar');
+  let i = Math.min(Math.max(parseInt(location.hash.slice(1), 10) - 1 || 0, 0), slides.length - 1);
+
+  function fit() {
+    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    stage.style.transform = `translate(${(innerWidth - 1920 * s) / 2}px, ${(innerHeight - 1080 * s) / 2}px) scale(${s})`;
+  }
+  function show(n) {
+    i = Math.min(Math.max(n, 0), slides.length - 1);
+    slides.forEach((el, k) => el.classList.toggle('on', k === i));
+    count.textContent = `${i + 1} / ${slides.length}`;
+    history.replaceState(null, '', `#${i + 1}`);
+  }
+  let idle;
+  function wake() { bar.classList.remove('hide'); clearTimeout(idle); idle = setTimeout(() => bar.classList.add('hide'), 2500); }
+
+  document.getElementById('prev').onclick = () => show(i - 1);
+  document.getElementById('next').onclick = () => show(i + 1);
+  document.getElementById('full').onclick = () =>
+    document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') document.getElementById('full').click();
+  });
+  let x0 = null;
+  addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  addEventListener('mousemove', wake);
+  addEventListener('resize', fit);
+  fit(); show(i); wake();
+})();
+</script>
+</body>
+</html>

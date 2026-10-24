@@ -1,0 +1,36 @@
+<section id="rollout" data-transition="fade" data-section="Rollout, value and the decisions we need" style="background:#F6F8FB;color:#1C2230;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#6B3FC9;text-transform:uppercase">Rollout</p>
+<h2 style="font-size:56px;font-weight:700;line-height:1.15">Tracking first, then each phase earns the next</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #1C2230;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262">PHASE 0</p>
+<h3 style="font-size:32px;font-weight:700">Tracking</h3>
+<ul style="font-size:24px;line-height:1.4"><li>GA4 and Firebase events on web, iOS, Android</li><li>BigQuery export on</li><li>Backend events for pushes and boosts</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: events match real app usage in BigQuery</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #1A9BDB;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#1576B0">PHASE 1</p>
+<h3 style="font-size:32px;font-weight:700">Insights v1</h3>
+<ul style="font-size:24px;line-height:1.4"><li>5 cards, graphs 1 to 5</li><li>Door offer for confirmed visits</li><li>Admin KPIs, funnels, revenue</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: pilot venues use it and say it helps</p>
+</div>
+<div style="background:#FDFDFE;border:2px solid #E3E6EB;border-top:10px solid #6B3FC9;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#6B3FC9">PHASE 2</p>
+<h3 style="font-size:32px;font-weight:700">Full picture</h3>
+<ul style="font-size:24px;line-height:1.4"><li>Graphs 6 to 8</li><li>“Likely visited” with opt-in location</li><li>Monthly email or PDF</li><li>Churn risk list</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: enough venues per city to benchmark</p>
+</div>
+<div style="background:#EEF1F5;border:2px solid #E3E6EB;border-top:10px solid #8C95A3;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#4A5262">PHASE 3</p>
+<h3 style="font-size:32px;font-weight:700">Add-ons</h3>
+<ul style="font-size:24px;line-height:1.4"><li>Retargeting and search lift</li><li>Audience interests</li><li>Ticket partner data</li></ul>
+<p style="font-size:24px;line-height:1.4;color:#13703F;font-weight:600">Gate: chosen from how owners use v1</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#4A5262">Why tracking first: every graph depends on it, and GA4 history can’t be backfilled.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#5B6472">VenueGPS · Venue Insights proposal</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5B6472;text-align:right">15</p>
+<aside>Each phase moves on only when its gate is met, so we never build graphs on data we haven’t checked.</aside>
+</section>
