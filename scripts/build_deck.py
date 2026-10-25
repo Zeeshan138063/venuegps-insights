@@ -112,6 +112,7 @@ TEMPLATE = """<!doctype html>
     #bar { display: none; }
   }
 </style>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div id="stage">
